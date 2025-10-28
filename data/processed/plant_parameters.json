@@ -1,0 +1,66 @@
+{
+  "capex": {
+    "nuclear": 17500,
+    "wind": 1900,
+    "solar": 1300,
+    "gas": 1500,
+    "hydro": 3000,
+    "biofuel": 3200
+  },
+  "opex": {
+    "nuclear": 22,
+    "wind": 12,
+    "solar": 12,
+    "gas": 55,
+    "hydro": 10,
+    "biofuel": 42
+  },
+  "maintenance": {
+    "nuclear": 105000,
+    "wind": 45000,
+    "solar": 20000,
+    "gas": 20000,
+    "hydro": 37500,
+    "biofuel": 70000
+  },
+  "emissions": {
+    "nuclear": 0.012,
+    "wind": 0.011,
+    "solar": 0.048,
+    "gas": 0.45,
+    "hydro": 0.024,
+    "biofuel": 0.23
+  },
+  "capacity_factor": {
+    "nuclear": 0.9,
+    "wind": 0.35,
+    "solar": 0.15,
+    "gas": 0.55,
+    "hydro": 0.5,
+    "biofuel": 0.8
+  },
+  "ramp_rate": {
+    "nuclear": 0.02,
+    "wind": 0.05,
+    "solar": 0.1,
+    "gas": 0.04,
+    "hydro": 0.15,
+    "biofuel": 0.01
+  },
+  "lead_time": {
+    "nuclear": 7,
+    "wind": 2,
+    "solar": 2,
+    "gas": 3,
+    "hydro": 6,
+    "biofuel": 3
+  },
+  "lifespan": {
+    "nuclear": 60,
+    "wind": 25,
+    "solar": 30,
+    "gas": 35,
+    "hydro": 100,
+    "biofuel": 35
+  }
+}
