@@ -68,118 +68,109 @@ ontario-power-optimization/
 
 | Set | Description |
 |-----|-------------|
-| T | Years in planning horizon (2025-2045) |
-| I | Plant types {nuclear, wind, solar, gas, hydro, biofuel} |
-| D | Representative days (12 clusters) |
-| H | Hours per day (0-23) |
+| $\mathcal{T}$ | Years in planning horizon {2025, ..., 2045} |
+| $\mathcal{I}$ | Plant types {nuclear, wind, solar, gas, hydro, biofuel} |
+| $\mathcal{D}$ | Representative days {0, ..., 11} |
+| $\mathcal{H}$ | Hours per day {0, ..., 23} |
 
 ### Decision Variables
 
 | Variable | Domain | Description |
 |----------|--------|-------------|
-| x[t,i] | R+ | New capacity of plant type i to build in year t (MW) |
-| N[t,i] | R+ | Total operating capacity of plant type i in year t (MW) |
-| p[t,d,h,i] | R+ | Power output from plant type i in year t, day d, hour h (MW) |
-| v[t,d,h,i] | R+ | Ramp rate violation slack variable (MW) |
+| $x_{t,i}$ | $\mathbb{R}^+$ | New capacity of plant type $i$ to build in year $t$ (MW) |
+| $N_{t,i}$ | $\mathbb{R}^+$ | Total operating capacity of plant type $i$ in year $t$ (MW) |
+| $p_{t,d,h,i}$ | $\mathbb{R}^+$ | Power output from plant type $i$ in year $t$, day $d$, hour $h$ (MW) |
+| $v_{t,d,h,i}$ | $\mathbb{R}^+$ | Ramp rate violation slack variable (MW) |
 
 ### Parameters
 
 | Parameter | Description |
 |-----------|-------------|
-| CapEx[i] | Capital cost for plant type i ($/kW) |
-| OpEx[i] | Operating cost for plant type i ($/MWh) |
-| MaintEx[i] | Annual maintenance cost for plant type i ($/MW/year) |
-| CF[i] | Capacity factor for plant type i |
-| EF[i] | Emission factor for plant type i (tons CO2/MWh) |
-| RR[i] | Ramp rate for plant type i (MW/min per MW capacity) |
-| LT[i] | Construction lead time for plant type i (years) |
-| W[d] | Weight of representative day d (number of days it represents) |
-| Demand[t,d,h] | Electricity demand in year t, day d, hour h (MW) |
-| PeakDemand[t] | Peak demand in year t (MW) |
-| InitCap[i] | Initial capacity of plant type i in 2025 (MW) |
-| r | Discount rate (3.92%) |
-| RM | Reserve margin (15%) |
-| RampPenalty | Penalty for ramp violations ($/MW) |
+| $C^{cap}_i$ | Capital cost for plant type $i$ ($/kW) |
+| $C^{op}_i$ | Operating cost for plant type $i$ ($/MWh) |
+| $C^{maint}_i$ | Annual maintenance cost for plant type $i$ ($/MW/year) |
+| $CF_i$ | Capacity factor for plant type $i$ |
+| $EF_i$ | Emission factor for plant type $i$ (tons CO₂/MWh) |
+| $RR_i$ | Ramp rate for plant type $i$ (MW/min per MW capacity) |
+| $LT_i$ | Construction lead time for plant type $i$ (years) |
+| $w_d$ | Weight of representative day $d$ (number of days it represents) |
+| $D_{t,d,h}$ | Electricity demand in year $t$, day $d$, hour $h$ (MW) |
+| $D^{peak}_t$ | Peak demand in year $t$ (MW) |
+| $N^{init}_i$ | Initial capacity of plant type $i$ in 2025 (MW) |
+| $r$ | Discount rate (3.92%) |
+| $RM$ | Reserve margin (15%) |
+| $\rho$ | Penalty for ramp violations ($/MW) |
 
 ### Objective Functions
 
 **1. Minimize Total Cost (NPV)**
 
-```
-Z_cost = CapitalCost + OperatingCost + MaintenanceCost + RampPenalty
+$$Z_{cost} = Z_{capex} + Z_{opex} + Z_{maint} + Z_{ramp}$$
 
 where:
-  CapitalCost    = sum over t,i of: x[t,i] * CapEx[i] * 1000 / (1+r)^(t-2025)
-  OperatingCost  = sum over t,d,h,i of: p[t,d,h,i] * W[d] * OpEx[i] / (1+r)^(t-2025)
-  MaintenanceCost = sum over t,i of: N[t,i] * MaintEx[i] / (1+r)^(t-2025)
-  RampPenalty    = sum over t,d,h,i of: v[t,d,h,i] * W[d] * RampPenalty / (1+r)^(t-2025)
-```
+
+$$Z_{capex} = \sum_{t \in \mathcal{T}} \sum_{i \in \mathcal{I}} \frac{x_{t,i} \cdot C^{cap}_i \cdot 1000}{(1+r)^{t-2025}}$$
+
+$$Z_{opex} = \sum_{t \in \mathcal{T}} \sum_{d \in \mathcal{D}} \sum_{h \in \mathcal{H}} \sum_{i \in \mathcal{I}} \frac{p_{t,d,h,i} \cdot w_d \cdot C^{op}_i}{(1+r)^{t-2025}}$$
+
+$$Z_{maint} = \sum_{t \in \mathcal{T}} \sum_{i \in \mathcal{I}} \frac{N_{t,i} \cdot C^{maint}_i}{(1+r)^{t-2025}}$$
+
+$$Z_{ramp} = \sum_{t \in \mathcal{T}} \sum_{d \in \mathcal{D}} \sum_{h \in \mathcal{H}} \sum_{i \in \mathcal{I}} \frac{v_{t,d,h,i} \cdot w_d \cdot \rho}{(1+r)^{t-2025}}$$
 
 **2. Minimize Total Emissions**
 
-```
-Z_emissions = sum over t,d,h,i of: p[t,d,h,i] * W[d] * EF[i]
-```
+$$Z_{emissions} = \sum_{t \in \mathcal{T}} \sum_{d \in \mathcal{D}} \sum_{h \in \mathcal{H}} \sum_{i \in \mathcal{I}} p_{t,d,h,i} \cdot w_d \cdot EF_i$$
 
 **3. Multi-Objective (Weighted Sum)**
 
-```
-Z_multi = alpha * (Z_cost / Z_cost_max) + (1 - alpha) * (Z_emissions / Z_emissions_max)
+$$Z_{multi} = \alpha \cdot \frac{Z_{cost}}{Z^{max}_{cost}} + (1 - \alpha) \cdot \frac{Z_{emissions}}{Z^{max}_{emissions}}$$
 
-where alpha in [0, 1]:
-  - alpha = 1.0: Minimize cost only
-  - alpha = 0.0: Minimize emissions only
-  - alpha in (0,1): Trade-off between objectives
-```
+where $\alpha \in [0, 1]$:
+- $\alpha = 1$: Minimize cost only
+- $\alpha = 0$: Minimize emissions only
+- $\alpha \in (0,1)$: Trade-off between objectives
 
 ### Constraints
 
 **1. Hourly Demand Satisfaction**
 
 Total generation must meet demand every hour:
-```
-sum over i of: p[t,d,h,i] >= Demand[t,d,h]    for all t, d, h
-```
+
+$$\sum_{i \in \mathcal{I}} p_{t,d,h,i} \geq D_{t,d,h} \quad \forall t \in \mathcal{T}, d \in \mathcal{D}, h \in \mathcal{H}$$
 
 **2. Hourly Capacity Limit**
 
 Generation cannot exceed available capacity:
-```
-p[t,d,h,i] <= N[t,i] * CF[i]    for all t, d, h, i
-```
+
+$$p_{t,d,h,i} \leq N_{t,i} \cdot CF_i \quad \forall t \in \mathcal{T}, d \in \mathcal{D}, h \in \mathcal{H}, i \in \mathcal{I}$$
 
 **3. Reserve Margin**
 
 Total capacity must exceed peak demand by reserve margin:
-```
-sum over i of: N[t,i] >= (1 + RM) * PeakDemand[t]    for all t
-```
+
+$$\sum_{i \in \mathcal{I}} N_{t,i} \geq (1 + RM) \cdot D^{peak}_t \quad \forall t \in \mathcal{T}$$
 
 **4. Ramp Rate Constraints (Soft)**
 
 Limit rate of change between consecutive hours:
-```
-p[t,d,h,i] - p[t,d,h-1,i] <= RR[i] * N[t,i] * 60 + v[t,d,h,i]    for all t, d, h>0, i
-p[t,d,h-1,i] - p[t,d,h,i] <= RR[i] * N[t,i] * 60 + v[t,d,h,i]    for all t, d, h>0, i
-```
+
+$$p_{t,d,h,i} - p_{t,d,h-1,i} \leq RR_i \cdot N_{t,i} \cdot 60 + v_{t,d,h,i} \quad \forall t, d, h > 0, i$$
+
+$$p_{t,d,h-1,i} - p_{t,d,h,i} \leq RR_i \cdot N_{t,i} \cdot 60 + v_{t,d,h,i} \quad \forall t, d, h > 0, i$$
 
 **5. Capacity Dynamics (with Lead Times)**
 
-Track capacity evolution accounting for construction lead times:
-```
-N[2025,i] = InitCap[i]    for all i (initial condition)
+Initial condition:
 
-N[t,i] = N[t-1,i] + x[t-LT[i],i]    for all t > 2025, i
-         (new capacity comes online LT[i] years after construction starts)
-```
+$$N_{2025,i} = N^{init}_i \quad \forall i \in \mathcal{I}$$
+
+Capacity evolution (new capacity comes online $LT_i$ years after construction starts):
+
+$$N_{t,i} = N_{t-1,i} + x_{t-LT_i,i} \quad \forall t > 2025, i \in \mathcal{I}$$
 
 **6. Non-Negativity**
-```
-x[t,i] >= 0    for all t, i
-N[t,i] >= 0    for all t, i
-p[t,d,h,i] >= 0    for all t, d, h, i
-v[t,d,h,i] >= 0    for all t, d, h, i
-```
+
+$$x_{t,i} \geq 0, \quad N_{t,i} \geq 0, \quad p_{t,d,h,i} \geq 0, \quad v_{t,d,h,i} \geq 0$$
 
 ## Plant Parameters
 
