@@ -20,7 +20,7 @@ Ontario's electricity demand is projected to grow 75% by 2050 (from 151 TWh to 2
 
 **Plant Types:** Nuclear, Wind, Solar, Natural Gas, Hydro, Biofuel
 
-**Approach:** Generate a Pareto frontier showing cost-emissions trade-offs to inform policy decisions.
+**Approach:** Generate a Pareto frontier showing cost-emissions trade-offs to inform policy decisions. 
 
 ## Technical Architecture
 
