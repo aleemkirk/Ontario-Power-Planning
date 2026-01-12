@@ -1,48 +1,12 @@
 """
-Constraint definitions for the optimization model.
+Shared constraint definitions for hourly optimization model.
 
 Contains:
-- Demand satisfaction constraints
-- Capacity constraints
 - Reserve margin constraints
-- Ramp rate constraints
 - Capacity dynamics (construction lead times, retirements)
 """
 
 import pyomo.environ as pyo
-
-
-def demand_satisfaction_constraint(model):
-    """
-    Ensure total generation meets demand at all times.
-
-    For annual model (prototype): Σ_i p[t,i] ≥ AnnualDemand[t]  ∀t
-
-    Args:
-        model: Pyomo model instance
-    """
-    def demand_rule(m, t):
-        return sum(m.p[t, i] for i in m.plant_types) >= m.annual_demand[t]
-
-    model.demand_constraint = pyo.Constraint(model.years, rule=demand_rule)
-
-
-def capacity_constraint(model):
-    """
-    Ensure generation doesn't exceed available capacity.
-
-    For annual model: p[t,i] ≤ N[t,i] × CapacityFactor[i] × 8760  ∀t,i
-    (8760 = hours per year, converts MW capacity to MWh annual energy)
-
-    Args:
-        model: Pyomo model instance
-    """
-    def capacity_rule(m, t, i):
-        return m.p[t, i] <= m.N[t, i] * m.capacity_factor[i] * 8760
-
-    model.capacity_constraint = pyo.Constraint(
-        model.years, model.plant_types, rule=capacity_rule
-    )
 
 
 def reserve_margin_constraint(model):
@@ -60,22 +24,6 @@ def reserve_margin_constraint(model):
         return total_capacity >= required_capacity
 
     model.reserve_margin_constraint = pyo.Constraint(model.years, rule=reserve_rule)
-
-
-def ramp_rate_constraint(model):
-    """
-    Limit rate of change in power output.
-
-    NOTE: Skipped in prototype (annual resolution).
-    Will be implemented in Phase 3 with hourly/monthly resolution.
-
-    |p[t,i,h] - p[t,i,h-1]| ≤ RampRate[i] × N[t,i]  ∀t,i,h
-
-    Args:
-        model: Pyomo model instance
-    """
-    # Skip for prototype - only relevant for sub-annual time resolution
-    pass
 
 
 def capacity_dynamics_constraint(model):
@@ -134,17 +82,3 @@ def capacity_dynamics_constraint(model):
     model.capacity_evolution_constraint = pyo.Constraint(
         model.years, model.plant_types, rule=capacity_evolution_rule
     )
-
-
-def add_all_constraints(model):
-    """
-    Add all constraints to the model.
-
-    Args:
-        model: Pyomo ConcreteModel instance
-    """
-    demand_satisfaction_constraint(model)
-    capacity_constraint(model)
-    reserve_margin_constraint(model)
-    ramp_rate_constraint(model)
-    capacity_dynamics_constraint(model)

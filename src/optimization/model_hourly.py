@@ -18,8 +18,7 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 
-from .variables import define_variables
-from .objectives import total_cost_objective_hourly, total_emissions_objective_hourly
+from .objectives import total_cost_objective, total_emissions_objective
 from .constraints_hourly import add_hourly_constraints
 from .constraints import (
     reserve_margin_constraint,
@@ -286,14 +285,14 @@ class PowerSystemOptimizationHourly:
 
         if objective == 'cost':
             m.obj = pyo.Objective(
-                expr=total_cost_objective_hourly(m),
+                expr=total_cost_objective(m),
                 sense=pyo.minimize
             )
             print("✓ Objective: Minimize total cost (with ramp penalties)")
 
         elif objective == 'emissions':
             m.obj = pyo.Objective(
-                expr=total_emissions_objective_hourly(m),
+                expr=total_emissions_objective(m),
                 sense=pyo.minimize
             )
             print("✓ Objective: Minimize total emissions")
@@ -303,8 +302,8 @@ class PowerSystemOptimizationHourly:
             # For now, use placeholder values
             m.cost_normalization = 1e11
             m.emissions_normalization = 1e8
-            cost_expr = total_cost_objective_hourly(m) / m.cost_normalization
-            emissions_expr = total_emissions_objective_hourly(m) / m.emissions_normalization
+            cost_expr = total_cost_objective(m) / m.cost_normalization
+            emissions_expr = total_emissions_objective(m) / m.emissions_normalization
             m.obj = pyo.Objective(
                 expr=alpha * cost_expr + (1 - alpha) * emissions_expr,
                 sense=pyo.minimize
