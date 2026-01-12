@@ -1,0 +1,17 @@
+IESO Hourly Demand Data Summary
+============================================================
+
+Date range: 2002-05-01 00:00:00 to 2025-11-11 00:00:00
+Total hours: 206,280
+Total years: 24
+
+Demand Statistics (MW):
+  Mean:   16,218
+  Median: 16,096
+  Min:    2,270
+  Max:    27,005
+  Std:    2,571
+
+Data Quality:
+  Missing values: 0
+  Negative values: 0

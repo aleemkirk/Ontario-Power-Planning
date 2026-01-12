@@ -1,0 +1,236 @@
+================================================================================
+PHASE 3: FULL 20-YEAR HOURLY MODEL TEST
+================================================================================
+
+Test Configuration:
+  Planning horizon: 2025-2045 (21 years)
+  Representative days: 12
+  Hours per day: 24
+  Ramp constraints: ACTIVATED (soft with $1000/MW penalty)
+  Lead times: ENABLED (nuclear=7yr, hydro=6yr, etc.)
+  Retirements: DISABLED (causes infeasibility with lead times)
+  Solver: HiGHS (open-source)
+  Expected variables: ~69,360
+  Expected constraints: ~106,700
+  Target solve time: <10 minutes
+
+Note: Retirements disabled due to infeasibility when combined with lead times.
+      Plants retire faster than replacements can be built (lead time lag).
+      This will be fixed in a future phase with 'builds in progress' parameter.
+
+--------------------------------------------------------------------------------
+Step 1: Initialize Full Hourly Model
+--------------------------------------------------------------------------------
+
+[Hourly Resolution Model Initialized]
+Planning horizon: 2025-2045 (21 years)
+Representative days: 12
+Ramp constraints: Soft
+✓ Model initialized in 0.00 seconds
+
+--------------------------------------------------------------------------------
+Step 2: Build Full Optimization Model
+--------------------------------------------------------------------------------
+
+[Loading Data]
+✓ Plant parameters loaded
+✓ Annual demand forecast: 21 years
+✓ Initial capacity (2025): 40449 MW
+✓ Loading hourly demand data...
+Loading existing hourly dataset from data/processed/hourly_demand_2025_2045.json...
+✓ Loaded hourly dataset: 21 years, 12 representative days
+✓ Hourly data: 12 rep days × 24 hours
+
+[Building Hourly Model]
+Objective: cost
+✓ Construction lead times enabled
+
+[Creating Decision Variables]
+✓ Annual variables (x, N): 252
+✓ Hourly variables (p_hourly): 36,288
+✓ Ramp slack variables: 36,288
+✓ Total variables: 72,828
+
+[Adding Constraints]
+
+[Adding Hourly Constraints]
+✓ Added hourly demand constraints: 6,048
+✓ Added hourly capacity constraints: 36,288
+✓ Added ramp rate constraints (soft (with penalty)): 69,552
+  🔥 RAMP RATE CONSTRAINTS NOW ACTIVE!
+
+✓ Total hourly constraints added: 111,888
+
+[Setting Objective Function]
+✓ Objective: Minimize total cost (with ramp penalties)
+
+[Model Statistics]
+✓ Variables: 72,828
+✓ Constraints: 112,035
+✓ Representative days: 12
+✓ Hours per day: 24
+✓ Model built successfully!
+✓ Model built in 0.54 seconds
+
+Model Statistics:
+  Total variables: 72,828
+  Total constraints: 112,035
+  Plant types: 6
+  Years: 21
+  Representative days: 12
+  Hours per day: 24
+
+--------------------------------------------------------------------------------
+Step 3: Solve Full 20-Year Optimization
+--------------------------------------------------------------------------------
+Objective: Minimize total system cost (NPV)
+Using HiGHS solver...
+This may take several minutes...
+
+[Solving Hourly Model]
+Solver: highs
+Time limit: 600s
+Solving...
+Running HiGHS 1.12.0 (git hash: 755a8e0): Copyright (c) 2025 HiGHS under MIT licence terms
+LP has 112035 rows; 71316 cols; 387547 nonzeros
+Coefficient ranges:
+  Matrix  [1e-01, 9e+00]
+  Cost    [7e+01, 2e+07]
+  Bound   [0e+00, 0e+00]
+  RHS     [2e+02, 4e+04]
+WARNING: Problem has some excessively large costs
+WARNING:    Consider scaling the objective by 1e-2, or setting the user_objective_scale option to -5
+Presolving model
+35828 rows, 36488 cols, 96010 nonzeros  0s
+Dependent equations search running on 113 equations with time limit of 6.00s
+Dependent equations search removed 0 rows and 0 nonzeros in 0.00s (limit = 6.00s)
+35265 rows, 33080 cols, 92592 nonzeros  0s
+Presolve reductions: rows 35265(-76770); columns 33080(-38236); nonzeros 92592(-294955) 
+Solving the presolved LP
+Using EKK dual simplex solver - serial
+  Iteration        Objective     Infeasibilities num(sum)
+          0     1.8827785220e+10 Pr: 5510(1.32381e+08) 0s
+      31288     1.2192564902e+11 Pr: 0(0) 0s
+      31288     1.2192564902e+11 Pr: 0(0) 0s
+
+Performed postsolve
+Solving the original LP from the solution after postsolve
+
+Model status        : Optimal
+Simplex   iterations: 31288
+Objective value     :  1.2192564902e+11
+P-D objective error :  1.1826515405e-14
+HiGHS run time      :          0.46
+
+✓ Optimal solution found in 4.1s
+
+[Extracting Results]
+✓ Calculating costs and emissions...
+  Ramp violations: 10153 MW total
+
+[Results Summary]
+Total Cost (NPV): $121.93 billion
+Total Emissions: 315.79 megatons CO2
+New Capacity: 22.81 GW
+Final Capacity: 63.26 GW
+Total Generation: 3976.21 TWh
+
+✓ Solve completed in 4.2 seconds (0.07 minutes)
+✓ Solver status: optimal
+
+--------------------------------------------------------------------------------
+Step 4: Extract and Analyze Results
+--------------------------------------------------------------------------------
+
+[COST BREAKDOWN - 20 YEARS]
+  Total Cost (NPV):        $    121.93B
+  Capital Costs:           $     25.81B
+  Operating Costs:         $     60.53B
+  Maintenance Costs:       $     35.58B
+  Ramp Penalty Cost:       $      0.24B
+    → Ramp constraints ARE BINDING over 20 years! ✓
+
+[EMISSIONS - 20 YEARS]
+  Total Emissions:             315.79M tons CO2
+
+[CAPACITY EXPANSION]
+
+Initial Capacity (2025):
+  Nuclear           13,000 MW
+  Hydro              8,500 MW
+  Gas               10,500 MW
+  Wind               5,575 MW
+  Solar              2,669 MW
+  Biofuel              205 MW
+  TOTAL             40,449 MW
+
+Final Capacity (2045):
+  Nuclear           13,000 MW  (+0 MW, +0.0%)
+  Hydro              8,500 MW  (+0 MW, +0.0%)
+  Gas               31,591 MW  (+21,091 MW, +200.9%)
+  Wind               7,296 MW  (+1,721 MW, +30.9%)
+  Solar              2,669 MW  (+0 MW, +0.0%)
+  Biofuel              205 MW  (+0 MW, +0.0%)
+  TOTAL             63,261 MW  (+22,812 MW, +56.4%)
+
+[NEW CAPACITY BUILT 2025-2045]
+  Gas               21,091 MW
+  Wind               1,721 MW
+  TOTAL             22,812 MW
+
+--------------------------------------------------------------------------------
+Step 5: Validation Checks
+--------------------------------------------------------------------------------
+
+[Check 1] Solve Time
+  ✓ PASS: 4.2s < 600s (10 min target)
+
+[Check 2] Feasibility
+  ✓ PASS: Optimal solution found
+
+[Check 3] Ramp Rate Constraints
+  ✓ PASS: Ramp constraints are ACTIVE and BINDING
+    Penalty cost = $244.44M
+
+[Check 4] Capacity Growth
+  ✓ PASS: Capacity grew 56.4% (reasonable for demand growth)
+
+[Check 5] Emissions Sanity Check
+  ✓ PASS: Average 15.04 MT/year is reasonable
+
+--------------------------------------------------------------------------------
+Step 6: Save Results
+--------------------------------------------------------------------------------
+✓ Saved new builds to results/data/hourly_new_builds_2025_2045.csv
+✓ Saved generation to results/data/hourly_generation_2025_2045.csv
+✓ Saved summary to results/data/hourly_summary_2025_2045.json
+
+================================================================================
+TEST SUMMARY
+================================================================================
+
+Timing Breakdown:
+  Initialization:      0.00s
+  Model Build:         0.54s
+  Solver Time:          4.2s (0.07 min)
+  ────────────────────────────────────────
+  Total Time:           4.8s (0.08 min)
+
+Model Statistics:
+  Variables:         72,828
+  Constraints:      112,035
+  Planning years:        21
+
+Key Results:
+  Total Cost:      $  121.93B
+  Ramp Penalty:    $  244.44M
+  New Capacity:      22,812 MW
+  Final Capacity:    63,261 MW
+  Total Emissions:   315.79 MT
+
+Validation:
+  ✓ ALL CHECKS PASSED
+
+================================================================================
+PHASE 3 FULL 20-YEAR HOURLY MODEL TEST COMPLETE!
+================================================================================

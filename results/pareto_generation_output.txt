@@ -1,0 +1,94 @@
+================================================================================
+PARETO FRONTIER GENERATION - 20-YEAR HOURLY MODEL
+================================================================================
+
+Configuration:
+  Planning horizon: 2025-2045
+  Number of points: 11
+  Representative days: 12
+  Ramp constraints: ACTIVATED
+  Lead times: ENABLED
+  Retirements: DISABLED
+
+Alpha values: 0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00
+
+[Progress: 1/11]
+
+================================================================================
+RUNNING OPTIMIZATION: α = 0.00
+================================================================================
+Objective: MINIMIZE EMISSIONS ONLY
+
+[Hourly Resolution Model Initialized]
+Planning horizon: 2025-2045 (21 years)
+Representative days: 12
+Ramp constraints: Soft
+
+[Loading Data]
+✓ Plant parameters loaded
+✓ Annual demand forecast: 21 years
+✓ Initial capacity (2025): 40449 MW
+✓ Loading hourly demand data...
+Loading existing hourly dataset from data/processed/hourly_demand_2025_2045.json...
+✓ Loaded hourly dataset: 21 years, 12 representative days
+✓ Hourly data: 12 rep days × 24 hours
+
+[Building Hourly Model]
+Objective: emissions
+✓ Construction lead times enabled
+
+[Creating Decision Variables]
+✓ Annual variables (x, N): 252
+✓ Hourly variables (p_hourly): 36,288
+✓ Ramp slack variables: 36,288
+✓ Total variables: 72,828
+
+[Adding Constraints]
+
+[Adding Hourly Constraints]
+✓ Added hourly demand constraints: 6,048
+✓ Added hourly capacity constraints: 36,288
+✓ Added ramp rate constraints (soft (with penalty)): 69,552
+  🔥 RAMP RATE CONSTRAINTS NOW ACTIVE!
+
+✓ Total hourly constraints added: 111,888
+
+[Setting Objective Function]
+✓ Objective: Minimize total emissions
+
+[Model Statistics]
+✓ Variables: 72,828
+✓ Constraints: 112,035
+✓ Representative days: 12
+✓ Hours per day: 24
+✓ Model built successfully!
+
+[Solving Hourly Model]
+Solver: highs
+Time limit: 600s
+Solving...
+
+✓ Optimal solution found in 3.7s
+
+[Extracting Results]
+ERROR: evaluating object as numeric value: x[2039,nuclear]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2039,nuclear]
+Traceback (most recent call last):
+  File "/Users/aleemkhan/PycharmProjects/Ontario-Power-Planning/generate_pareto_hourly.py", line 333, in <module>
+    pareto_results = generate_pareto_frontier(n_points=11, start_year=2025, end_year=2045)
+  File "/Users/aleemkhan/PycharmProjects/Ontario-Power-Planning/generate_pareto_hourly.py", line 152, in generate_pareto_frontier
+    result = run_single_optimization(alpha, start_year, end_year)
+  File "/Users/aleemkhan/PycharmProjects/Ontario-Power-Planning/generate_pareto_hourly.py", line 78, in run_single_optimization
+    result = optimizer.solve(solver='highs', time_limit=600, tee=False, save_results=True)
+  File "/Users/aleemkhan/PycharmProjects/Ontario-Power-Planning/src/optimization/model_hourly.py", line 714, in solve
+    self.results = self.get_results()
+                   ~~~~~~~~~~~~~~~~^^
+  File "/Users/aleemkhan/PycharmProjects/Ontario-Power-Planning/src/optimization/model_hourly.py", line 402, in get_results
+    x_val = pyo.value(m.x[t, i]) or 0.0
+            ~~~~~~~~~^^^^^^^^^^^
+  File "/Users/aleemkhan/miniconda3/envs/Ontario-Power-Planning/lib/python3.13/site-packages/pyomo/common/numeric_types.py", line 384, in value
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: No value for uninitialized VarData object x[2039,nuclear]

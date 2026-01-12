@@ -1,0 +1,971 @@
+================================================================================
+PARETO FRONTIER GENERATION - 20-YEAR HOURLY MODEL
+================================================================================
+
+Configuration:
+  Planning horizon: 2025-2045
+  Number of points: 11
+  Representative days: 12
+  Ramp constraints: ACTIVATED
+  Lead times: ENABLED
+  Retirements: DISABLED
+
+Alpha values: 0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00
+
+[Progress: 1/11]
+
+================================================================================
+RUNNING OPTIMIZATION: α = 0.00
+================================================================================
+Objective: MINIMIZE EMISSIONS ONLY
+
+[Hourly Resolution Model Initialized]
+Planning horizon: 2025-2045 (21 years)
+Representative days: 12
+Ramp constraints: Soft
+
+[Loading Data]
+✓ Plant parameters loaded
+✓ Annual demand forecast: 21 years
+✓ Initial capacity (2025): 40449 MW
+✓ Loading hourly demand data...
+Loading existing hourly dataset from data/processed/hourly_demand_2025_2045.json...
+✓ Loaded hourly dataset: 21 years, 12 representative days
+✓ Hourly data: 12 rep days × 24 hours
+
+[Building Hourly Model]
+Objective: emissions
+✓ Construction lead times enabled
+
+[Creating Decision Variables]
+✓ Annual variables (x, N): 252
+✓ Hourly variables (p_hourly): 36,288
+✓ Ramp slack variables: 36,288
+✓ Total variables: 72,828
+
+[Adding Constraints]
+
+[Adding Hourly Constraints]
+✓ Added hourly demand constraints: 6,048
+✓ Added hourly capacity constraints: 36,288
+✓ Added ramp rate constraints (soft (with penalty)): 69,552
+  🔥 RAMP RATE CONSTRAINTS NOW ACTIVE!
+
+✓ Total hourly constraints added: 111,888
+
+[Setting Objective Function]
+✓ Objective: Minimize total emissions
+
+[Model Statistics]
+✓ Variables: 72,828
+✓ Constraints: 112,035
+✓ Representative days: 12
+✓ Hours per day: 24
+✓ Model built successfully!
+
+[Solving Hourly Model]
+Solver: highs
+Time limit: 600s
+Solving...
+
+✓ Optimal solution found in 3.8s
+
+[Extracting Results]
+ERROR: evaluating object as numeric value: x[2039,nuclear]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2039,nuclear]
+ERROR: evaluating object as numeric value: x[2040,nuclear]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2040,nuclear]
+ERROR: evaluating object as numeric value: x[2040,hydro]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2040,hydro]
+ERROR: evaluating object as numeric value: x[2041,nuclear]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2041,nuclear]
+ERROR: evaluating object as numeric value: x[2041,hydro]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2041,hydro]
+ERROR: evaluating object as numeric value: x[2042,nuclear]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2042,nuclear]
+ERROR: evaluating object as numeric value: x[2042,hydro]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2042,hydro]
+ERROR: evaluating object as numeric value: x[2043,nuclear]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2043,nuclear]
+ERROR: evaluating object as numeric value: x[2043,gas]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2043,gas]
+ERROR: evaluating object as numeric value: x[2043,hydro]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2043,hydro]
+ERROR: evaluating object as numeric value: x[2043,biofuel]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2043,biofuel]
+ERROR: evaluating object as numeric value: x[2044,nuclear]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2044,nuclear]
+ERROR: evaluating object as numeric value: x[2044,wind]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2044,wind]
+ERROR: evaluating object as numeric value: x[2044,solar]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2044,solar]
+ERROR: evaluating object as numeric value: x[2044,gas]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2044,gas]
+ERROR: evaluating object as numeric value: x[2044,hydro]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2044,hydro]
+ERROR: evaluating object as numeric value: x[2044,biofuel]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2044,biofuel]
+ERROR: evaluating object as numeric value: x[2045,nuclear]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2045,nuclear]
+ERROR: evaluating object as numeric value: x[2045,wind]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2045,wind]
+ERROR: evaluating object as numeric value: x[2045,solar]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2045,solar]
+ERROR: evaluating object as numeric value: x[2045,gas]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2045,gas]
+ERROR: evaluating object as numeric value: x[2045,hydro]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2045,hydro]
+ERROR: evaluating object as numeric value: x[2045,biofuel]
+        (object: <class 'pyomo.core.base.var.VarData'>)
+    No value for uninitialized VarData object x[2045,biofuel]
+✓ Calculating costs and emissions...
+  Ramp violations: 1325 MW total
+
+[Results Summary]
+Total Cost (NPV): $279.86 billion
+Total Emissions: 49.02 megatons CO2
+New Capacity: 98.55 GW
+Final Capacity: 139.00 GW
+Total Generation: 3976.21 TWh
+
+[RESULTS]
+  Status: optimal
+  Solve time: 3.9s
+  Total cost: $279.86B
+  Total emissions: 49.02 MT
+  Ramp penalty: $39.86M
+  Final capacity: 138,996 MW
+
+[Progress: 2/11]
+
+================================================================================
+RUNNING OPTIMIZATION: α = 0.10
+================================================================================
+Objective: 10% cost, 90% emissions
+
+[Hourly Resolution Model Initialized]
+Planning horizon: 2025-2045 (21 years)
+Representative days: 12
+Ramp constraints: Soft
+
+[Loading Data]
+✓ Plant parameters loaded
+✓ Annual demand forecast: 21 years
+✓ Initial capacity (2025): 40449 MW
+✓ Loading hourly demand data...
+Loading existing hourly dataset from data/processed/hourly_demand_2025_2045.json...
+✓ Loaded hourly dataset: 21 years, 12 representative days
+✓ Hourly data: 12 rep days × 24 hours
+
+[Building Hourly Model]
+Objective: multi
+✓ Construction lead times enabled
+
+[Creating Decision Variables]
+✓ Annual variables (x, N): 252
+✓ Hourly variables (p_hourly): 36,288
+✓ Ramp slack variables: 36,288
+✓ Total variables: 72,828
+
+[Adding Constraints]
+
+[Adding Hourly Constraints]
+✓ Added hourly demand constraints: 6,048
+✓ Added hourly capacity constraints: 36,288
+✓ Added ramp rate constraints (soft (with penalty)): 69,552
+  🔥 RAMP RATE CONSTRAINTS NOW ACTIVE!
+
+✓ Total hourly constraints added: 111,888
+
+[Setting Objective Function]
+✓ Objective: Multi-objective (α=0.1)
+
+[Model Statistics]
+✓ Variables: 72,828
+✓ Constraints: 112,035
+✓ Representative days: 12
+✓ Hours per day: 24
+✓ Model built successfully!
+
+[Solving Hourly Model]
+Solver: highs
+Time limit: 600s
+Solving...
+
+✓ Optimal solution found in 9.0s
+
+[Extracting Results]
+✓ Calculating costs and emissions...
+  Ramp violations: 1702 MW total
+
+[Results Summary]
+Total Cost (NPV): $168.02 billion
+Total Emissions: 51.04 megatons CO2
+New Capacity: 45.51 GW
+Final Capacity: 85.96 GW
+Total Generation: 3976.21 TWh
+
+[RESULTS]
+  Status: optimal
+  Solve time: 9.1s
+  Total cost: $168.02B
+  Total emissions: 51.04 MT
+  Ramp penalty: $43.53M
+  Final capacity: 85,958 MW
+
+[Progress: 3/11]
+
+================================================================================
+RUNNING OPTIMIZATION: α = 0.20
+================================================================================
+Objective: 20% cost, 80% emissions
+
+[Hourly Resolution Model Initialized]
+Planning horizon: 2025-2045 (21 years)
+Representative days: 12
+Ramp constraints: Soft
+
+[Loading Data]
+✓ Plant parameters loaded
+✓ Annual demand forecast: 21 years
+✓ Initial capacity (2025): 40449 MW
+✓ Loading hourly demand data...
+Loading existing hourly dataset from data/processed/hourly_demand_2025_2045.json...
+✓ Loaded hourly dataset: 21 years, 12 representative days
+✓ Hourly data: 12 rep days × 24 hours
+
+[Building Hourly Model]
+Objective: multi
+✓ Construction lead times enabled
+
+[Creating Decision Variables]
+✓ Annual variables (x, N): 252
+✓ Hourly variables (p_hourly): 36,288
+✓ Ramp slack variables: 36,288
+✓ Total variables: 72,828
+
+[Adding Constraints]
+
+[Adding Hourly Constraints]
+✓ Added hourly demand constraints: 6,048
+✓ Added hourly capacity constraints: 36,288
+✓ Added ramp rate constraints (soft (with penalty)): 69,552
+  🔥 RAMP RATE CONSTRAINTS NOW ACTIVE!
+
+✓ Total hourly constraints added: 111,888
+
+[Setting Objective Function]
+✓ Objective: Multi-objective (α=0.2)
+
+[Model Statistics]
+✓ Variables: 72,828
+✓ Constraints: 112,035
+✓ Representative days: 12
+✓ Hours per day: 24
+✓ Model built successfully!
+
+[Solving Hourly Model]
+Solver: highs
+Time limit: 600s
+Solving...
+
+✓ Optimal solution found in 8.8s
+
+[Extracting Results]
+✓ Calculating costs and emissions...
+  Ramp violations: 3144 MW total
+
+[Results Summary]
+Total Cost (NPV): $160.66 billion
+Total Emissions: 52.30 megatons CO2
+New Capacity: 40.87 GW
+Final Capacity: 81.31 GW
+Total Generation: 3976.21 TWh
+
+[RESULTS]
+  Status: optimal
+  Solve time: 9.0s
+  Total cost: $160.66B
+  Total emissions: 52.30 MT
+  Ramp penalty: $61.71M
+  Final capacity: 81,315 MW
+
+[Progress: 4/11]
+
+================================================================================
+RUNNING OPTIMIZATION: α = 0.30
+================================================================================
+Objective: 30% cost, 70% emissions
+
+[Hourly Resolution Model Initialized]
+Planning horizon: 2025-2045 (21 years)
+Representative days: 12
+Ramp constraints: Soft
+
+[Loading Data]
+✓ Plant parameters loaded
+✓ Annual demand forecast: 21 years
+✓ Initial capacity (2025): 40449 MW
+✓ Loading hourly demand data...
+Loading existing hourly dataset from data/processed/hourly_demand_2025_2045.json...
+✓ Loaded hourly dataset: 21 years, 12 representative days
+✓ Hourly data: 12 rep days × 24 hours
+
+[Building Hourly Model]
+Objective: multi
+✓ Construction lead times enabled
+
+[Creating Decision Variables]
+✓ Annual variables (x, N): 252
+✓ Hourly variables (p_hourly): 36,288
+✓ Ramp slack variables: 36,288
+✓ Total variables: 72,828
+
+[Adding Constraints]
+
+[Adding Hourly Constraints]
+✓ Added hourly demand constraints: 6,048
+✓ Added hourly capacity constraints: 36,288
+✓ Added ramp rate constraints (soft (with penalty)): 69,552
+  🔥 RAMP RATE CONSTRAINTS NOW ACTIVE!
+
+✓ Total hourly constraints added: 111,888
+
+[Setting Objective Function]
+✓ Objective: Multi-objective (α=0.30000000000000004)
+
+[Model Statistics]
+✓ Variables: 72,828
+✓ Constraints: 112,035
+✓ Representative days: 12
+✓ Hours per day: 24
+✓ Model built successfully!
+
+[Solving Hourly Model]
+Solver: highs
+Time limit: 600s
+Solving...
+
+✓ Optimal solution found in 8.7s
+
+[Extracting Results]
+✓ Calculating costs and emissions...
+  Ramp violations: 4419 MW total
+
+[Results Summary]
+Total Cost (NPV): $155.20 billion
+Total Emissions: 54.14 megatons CO2
+New Capacity: 37.02 GW
+Final Capacity: 77.47 GW
+Total Generation: 3976.21 TWh
+
+[RESULTS]
+  Status: optimal
+  Solve time: 8.8s
+  Total cost: $155.20B
+  Total emissions: 54.14 MT
+  Ramp penalty: $81.88M
+  Final capacity: 77,466 MW
+
+[Progress: 5/11]
+
+================================================================================
+RUNNING OPTIMIZATION: α = 0.40
+================================================================================
+Objective: 40% cost, 60% emissions
+
+[Hourly Resolution Model Initialized]
+Planning horizon: 2025-2045 (21 years)
+Representative days: 12
+Ramp constraints: Soft
+
+[Loading Data]
+✓ Plant parameters loaded
+✓ Annual demand forecast: 21 years
+✓ Initial capacity (2025): 40449 MW
+✓ Loading hourly demand data...
+Loading existing hourly dataset from data/processed/hourly_demand_2025_2045.json...
+✓ Loaded hourly dataset: 21 years, 12 representative days
+✓ Hourly data: 12 rep days × 24 hours
+
+[Building Hourly Model]
+Objective: multi
+✓ Construction lead times enabled
+
+[Creating Decision Variables]
+✓ Annual variables (x, N): 252
+✓ Hourly variables (p_hourly): 36,288
+✓ Ramp slack variables: 36,288
+✓ Total variables: 72,828
+
+[Adding Constraints]
+
+[Adding Hourly Constraints]
+✓ Added hourly demand constraints: 6,048
+✓ Added hourly capacity constraints: 36,288
+✓ Added ramp rate constraints (soft (with penalty)): 69,552
+  🔥 RAMP RATE CONSTRAINTS NOW ACTIVE!
+
+✓ Total hourly constraints added: 111,888
+
+[Setting Objective Function]
+✓ Objective: Multi-objective (α=0.4)
+
+[Model Statistics]
+✓ Variables: 72,828
+✓ Constraints: 112,035
+✓ Representative days: 12
+✓ Hours per day: 24
+✓ Model built successfully!
+
+[Solving Hourly Model]
+Solver: highs
+Time limit: 600s
+Solving...
+
+✓ Optimal solution found in 17.0s
+
+[Extracting Results]
+✓ Calculating costs and emissions...
+  Ramp violations: 4696 MW total
+
+[Results Summary]
+Total Cost (NPV): $150.76 billion
+Total Emissions: 56.52 megatons CO2
+New Capacity: 34.86 GW
+Final Capacity: 75.31 GW
+Total Generation: 3976.21 TWh
+
+[RESULTS]
+  Status: optimal
+  Solve time: 17.1s
+  Total cost: $150.76B
+  Total emissions: 56.52 MT
+  Ramp penalty: $87.09M
+  Final capacity: 75,312 MW
+
+[Progress: 6/11]
+
+================================================================================
+RUNNING OPTIMIZATION: α = 0.50
+================================================================================
+Objective: 50% cost, 50% emissions
+
+[Hourly Resolution Model Initialized]
+Planning horizon: 2025-2045 (21 years)
+Representative days: 12
+Ramp constraints: Soft
+
+[Loading Data]
+✓ Plant parameters loaded
+✓ Annual demand forecast: 21 years
+✓ Initial capacity (2025): 40449 MW
+✓ Loading hourly demand data...
+Loading existing hourly dataset from data/processed/hourly_demand_2025_2045.json...
+✓ Loaded hourly dataset: 21 years, 12 representative days
+✓ Hourly data: 12 rep days × 24 hours
+
+[Building Hourly Model]
+Objective: multi
+✓ Construction lead times enabled
+
+[Creating Decision Variables]
+✓ Annual variables (x, N): 252
+✓ Hourly variables (p_hourly): 36,288
+✓ Ramp slack variables: 36,288
+✓ Total variables: 72,828
+
+[Adding Constraints]
+
+[Adding Hourly Constraints]
+✓ Added hourly demand constraints: 6,048
+✓ Added hourly capacity constraints: 36,288
+✓ Added ramp rate constraints (soft (with penalty)): 69,552
+  🔥 RAMP RATE CONSTRAINTS NOW ACTIVE!
+
+✓ Total hourly constraints added: 111,888
+
+[Setting Objective Function]
+✓ Objective: Multi-objective (α=0.5)
+
+[Model Statistics]
+✓ Variables: 72,828
+✓ Constraints: 112,035
+✓ Representative days: 12
+✓ Hours per day: 24
+✓ Model built successfully!
+
+[Solving Hourly Model]
+Solver: highs
+Time limit: 600s
+Solving...
+
+✓ Optimal solution found in 13.8s
+
+[Extracting Results]
+✓ Calculating costs and emissions...
+  Ramp violations: 5483 MW total
+
+[Results Summary]
+Total Cost (NPV): $147.89 billion
+Total Emissions: 58.90 megatons CO2
+New Capacity: 34.86 GW
+Final Capacity: 75.31 GW
+Total Generation: 3976.21 TWh
+
+[RESULTS]
+  Status: optimal
+  Solve time: 13.9s
+  Total cost: $147.89B
+  Total emissions: 58.90 MT
+  Ramp penalty: $102.49M
+  Final capacity: 75,312 MW
+
+[Progress: 7/11]
+
+================================================================================
+RUNNING OPTIMIZATION: α = 0.60
+================================================================================
+Objective: 60% cost, 40% emissions
+
+[Hourly Resolution Model Initialized]
+Planning horizon: 2025-2045 (21 years)
+Representative days: 12
+Ramp constraints: Soft
+
+[Loading Data]
+✓ Plant parameters loaded
+✓ Annual demand forecast: 21 years
+✓ Initial capacity (2025): 40449 MW
+✓ Loading hourly demand data...
+Loading existing hourly dataset from data/processed/hourly_demand_2025_2045.json...
+✓ Loaded hourly dataset: 21 years, 12 representative days
+✓ Hourly data: 12 rep days × 24 hours
+
+[Building Hourly Model]
+Objective: multi
+✓ Construction lead times enabled
+
+[Creating Decision Variables]
+✓ Annual variables (x, N): 252
+✓ Hourly variables (p_hourly): 36,288
+✓ Ramp slack variables: 36,288
+✓ Total variables: 72,828
+
+[Adding Constraints]
+
+[Adding Hourly Constraints]
+✓ Added hourly demand constraints: 6,048
+✓ Added hourly capacity constraints: 36,288
+✓ Added ramp rate constraints (soft (with penalty)): 69,552
+  🔥 RAMP RATE CONSTRAINTS NOW ACTIVE!
+
+✓ Total hourly constraints added: 111,888
+
+[Setting Objective Function]
+✓ Objective: Multi-objective (α=0.6000000000000001)
+
+[Model Statistics]
+✓ Variables: 72,828
+✓ Constraints: 112,035
+✓ Representative days: 12
+✓ Hours per day: 24
+✓ Model built successfully!
+
+[Solving Hourly Model]
+Solver: highs
+Time limit: 600s
+Solving...
+
+✓ Optimal solution found in 8.7s
+
+[Extracting Results]
+✓ Calculating costs and emissions...
+  Ramp violations: 7084 MW total
+
+[Results Summary]
+Total Cost (NPV): $141.12 billion
+Total Emissions: 67.29 megatons CO2
+New Capacity: 33.85 GW
+Final Capacity: 74.30 GW
+Total Generation: 3976.21 TWh
+
+[RESULTS]
+  Status: optimal
+  Solve time: 8.8s
+  Total cost: $141.12B
+  Total emissions: 67.29 MT
+  Ramp penalty: $137.08M
+  Final capacity: 74,303 MW
+
+[Progress: 8/11]
+
+================================================================================
+RUNNING OPTIMIZATION: α = 0.70
+================================================================================
+Objective: 70% cost, 30% emissions
+
+[Hourly Resolution Model Initialized]
+Planning horizon: 2025-2045 (21 years)
+Representative days: 12
+Ramp constraints: Soft
+
+[Loading Data]
+✓ Plant parameters loaded
+✓ Annual demand forecast: 21 years
+✓ Initial capacity (2025): 40449 MW
+✓ Loading hourly demand data...
+Loading existing hourly dataset from data/processed/hourly_demand_2025_2045.json...
+✓ Loaded hourly dataset: 21 years, 12 representative days
+✓ Hourly data: 12 rep days × 24 hours
+
+[Building Hourly Model]
+Objective: multi
+✓ Construction lead times enabled
+
+[Creating Decision Variables]
+✓ Annual variables (x, N): 252
+✓ Hourly variables (p_hourly): 36,288
+✓ Ramp slack variables: 36,288
+✓ Total variables: 72,828
+
+[Adding Constraints]
+
+[Adding Hourly Constraints]
+✓ Added hourly demand constraints: 6,048
+✓ Added hourly capacity constraints: 36,288
+✓ Added ramp rate constraints (soft (with penalty)): 69,552
+  🔥 RAMP RATE CONSTRAINTS NOW ACTIVE!
+
+✓ Total hourly constraints added: 111,888
+
+[Setting Objective Function]
+✓ Objective: Multi-objective (α=0.7000000000000001)
+
+[Model Statistics]
+✓ Variables: 72,828
+✓ Constraints: 112,035
+✓ Representative days: 12
+✓ Hours per day: 24
+✓ Model built successfully!
+
+[Solving Hourly Model]
+Solver: highs
+Time limit: 600s
+Solving...
+
+✓ Optimal solution found in 8.3s
+
+[Extracting Results]
+✓ Calculating costs and emissions...
+  Ramp violations: 8563 MW total
+
+[Results Summary]
+Total Cost (NPV): $135.80 billion
+Total Emissions: 77.12 megatons CO2
+New Capacity: 32.86 GW
+Final Capacity: 73.31 GW
+Total Generation: 3976.21 TWh
+
+[RESULTS]
+  Status: optimal
+  Solve time: 8.4s
+  Total cost: $135.80B
+  Total emissions: 77.12 MT
+  Ramp penalty: $175.55M
+  Final capacity: 73,310 MW
+
+[Progress: 9/11]
+
+================================================================================
+RUNNING OPTIMIZATION: α = 0.80
+================================================================================
+Objective: 80% cost, 20% emissions
+
+[Hourly Resolution Model Initialized]
+Planning horizon: 2025-2045 (21 years)
+Representative days: 12
+Ramp constraints: Soft
+
+[Loading Data]
+✓ Plant parameters loaded
+✓ Annual demand forecast: 21 years
+✓ Initial capacity (2025): 40449 MW
+✓ Loading hourly demand data...
+Loading existing hourly dataset from data/processed/hourly_demand_2025_2045.json...
+✓ Loaded hourly dataset: 21 years, 12 representative days
+✓ Hourly data: 12 rep days × 24 hours
+
+[Building Hourly Model]
+Objective: multi
+✓ Construction lead times enabled
+
+[Creating Decision Variables]
+✓ Annual variables (x, N): 252
+✓ Hourly variables (p_hourly): 36,288
+✓ Ramp slack variables: 36,288
+✓ Total variables: 72,828
+
+[Adding Constraints]
+
+[Adding Hourly Constraints]
+✓ Added hourly demand constraints: 6,048
+✓ Added hourly capacity constraints: 36,288
+✓ Added ramp rate constraints (soft (with penalty)): 69,552
+  🔥 RAMP RATE CONSTRAINTS NOW ACTIVE!
+
+✓ Total hourly constraints added: 111,888
+
+[Setting Objective Function]
+✓ Objective: Multi-objective (α=0.8)
+
+[Model Statistics]
+✓ Variables: 72,828
+✓ Constraints: 112,035
+✓ Representative days: 12
+✓ Hours per day: 24
+✓ Model built successfully!
+
+[Solving Hourly Model]
+Solver: highs
+Time limit: 600s
+Solving...
+
+✓ Optimal solution found in 5.7s
+
+[Extracting Results]
+✓ Calculating costs and emissions...
+  Ramp violations: 4465 MW total
+
+[Results Summary]
+Total Cost (NPV): $172.98 billion
+Total Emissions: 521.63 megatons CO2
+New Capacity: 34.05 GW
+Final Capacity: 74.50 GW
+Total Generation: 5246.13 TWh
+
+[RESULTS]
+  Status: optimal
+  Solve time: 5.9s
+  Total cost: $172.98B
+  Total emissions: 521.63 MT
+  Ramp penalty: $110.27M
+  Final capacity: 74,497 MW
+
+[Progress: 10/11]
+
+================================================================================
+RUNNING OPTIMIZATION: α = 0.90
+================================================================================
+Objective: 90% cost, 10% emissions
+
+[Hourly Resolution Model Initialized]
+Planning horizon: 2025-2045 (21 years)
+Representative days: 12
+Ramp constraints: Soft
+
+[Loading Data]
+✓ Plant parameters loaded
+✓ Annual demand forecast: 21 years
+✓ Initial capacity (2025): 40449 MW
+✓ Loading hourly demand data...
+Loading existing hourly dataset from data/processed/hourly_demand_2025_2045.json...
+✓ Loaded hourly dataset: 21 years, 12 representative days
+✓ Hourly data: 12 rep days × 24 hours
+
+[Building Hourly Model]
+Objective: multi
+✓ Construction lead times enabled
+
+[Creating Decision Variables]
+✓ Annual variables (x, N): 252
+✓ Hourly variables (p_hourly): 36,288
+✓ Ramp slack variables: 36,288
+✓ Total variables: 72,828
+
+[Adding Constraints]
+
+[Adding Hourly Constraints]
+✓ Added hourly demand constraints: 6,048
+✓ Added hourly capacity constraints: 36,288
+✓ Added ramp rate constraints (soft (with penalty)): 69,552
+  🔥 RAMP RATE CONSTRAINTS NOW ACTIVE!
+
+✓ Total hourly constraints added: 111,888
+
+[Setting Objective Function]
+✓ Objective: Multi-objective (α=0.9)
+
+[Model Statistics]
+✓ Variables: 72,828
+✓ Constraints: 112,035
+✓ Representative days: 12
+✓ Hours per day: 24
+✓ Model built successfully!
+
+[Solving Hourly Model]
+Solver: highs
+Time limit: 600s
+Solving...
+
+✓ Optimal solution found in 5.8s
+
+[Extracting Results]
+✓ Calculating costs and emissions...
+  Ramp violations: 4987 MW total
+
+[Results Summary]
+Total Cost (NPV): $172.02 billion
+Total Emissions: 528.16 megatons CO2
+New Capacity: 33.25 GW
+Final Capacity: 73.70 GW
+Total Generation: 5243.64 TWh
+
+[RESULTS]
+  Status: optimal
+  Solve time: 5.9s
+  Total cost: $172.02B
+  Total emissions: 528.16 MT
+  Ramp penalty: $125.28M
+  Final capacity: 73,700 MW
+
+[Progress: 11/11]
+
+================================================================================
+RUNNING OPTIMIZATION: α = 1.00
+================================================================================
+Objective: MINIMIZE COST ONLY
+
+[Hourly Resolution Model Initialized]
+Planning horizon: 2025-2045 (21 years)
+Representative days: 12
+Ramp constraints: Soft
+
+[Loading Data]
+✓ Plant parameters loaded
+✓ Annual demand forecast: 21 years
+✓ Initial capacity (2025): 40449 MW
+✓ Loading hourly demand data...
+Loading existing hourly dataset from data/processed/hourly_demand_2025_2045.json...
+✓ Loaded hourly dataset: 21 years, 12 representative days
+✓ Hourly data: 12 rep days × 24 hours
+
+[Building Hourly Model]
+Objective: cost
+✓ Construction lead times enabled
+
+[Creating Decision Variables]
+✓ Annual variables (x, N): 252
+✓ Hourly variables (p_hourly): 36,288
+✓ Ramp slack variables: 36,288
+✓ Total variables: 72,828
+
+[Adding Constraints]
+
+[Adding Hourly Constraints]
+✓ Added hourly demand constraints: 6,048
+✓ Added hourly capacity constraints: 36,288
+✓ Added ramp rate constraints (soft (with penalty)): 69,552
+  🔥 RAMP RATE CONSTRAINTS NOW ACTIVE!
+
+✓ Total hourly constraints added: 111,888
+
+[Setting Objective Function]
+✓ Objective: Minimize total cost (with ramp penalties)
+
+[Model Statistics]
+✓ Variables: 72,828
+✓ Constraints: 112,035
+✓ Representative days: 12
+✓ Hours per day: 24
+✓ Model built successfully!
+
+[Solving Hourly Model]
+Solver: highs
+Time limit: 600s
+Solving...
+/Users/aleemkhan/PycharmProjects/Ontario-Power-Planning/generate_pareto_hourly.py:317: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from font(s) Arial.
+  plt.tight_layout()
+/Users/aleemkhan/PycharmProjects/Ontario-Power-Planning/generate_pareto_hourly.py:321: UserWarning: Glyph 8322 (\N{SUBSCRIPT TWO}) missing from font(s) Arial.
+  plt.savefig(fig_file, dpi=300, bbox_inches='tight')
+
+✓ Optimal solution found in 4.0s
+
+[Extracting Results]
+✓ Calculating costs and emissions...
+  Ramp violations: 10153 MW total
+
+[Results Summary]
+Total Cost (NPV): $122.17 billion
+Total Emissions: 315.79 megatons CO2
+New Capacity: 22.81 GW
+Final Capacity: 63.26 GW
+Total Generation: 3976.21 TWh
+
+[RESULTS]
+  Status: optimal
+  Solve time: 4.1s
+  Total cost: $122.17B
+  Total emissions: 315.79 MT
+  Ramp penalty: $244.44M
+  Final capacity: 63,261 MW
+
+================================================================================
+PARETO FRONTIER GENERATION COMPLETE
+================================================================================
+Successfully generated 11/11 solutions
+
+[Saving Results]
+✓ Saved Pareto frontier summary to results/data/pareto_frontier_hourly.csv
+✓ Saved capacity mix to results/data/pareto_capacity_mix_hourly.csv
+✓ Saved detailed results to results/data/pareto_frontier_hourly_detailed.json
+
+[Creating Visualizations]
+✓ Saved Pareto frontier plot to results/figures/pareto_frontier_hourly.png
+
+================================================================================
+FINAL SUMMARY
+================================================================================
+
+Total execution time: 1.74 minutes
+Solutions generated: 11
+Average solve time: 8.6s
+
+Pareto Frontier Range:
+  Cost:      $122.17B - $279.86B
+  Emissions: 49.02 MT - 528.16 MT
+
+Trade-off Analysis:
+  Cost range: $157.69B (129.1%)
+  Emissions range: 479.14 MT (977.5%)
+
+Marginal Cost of Carbon Reduction:
+  Average: $-234.75/ton CO₂
+  Range: $-234.75 - $-234.75/ton CO₂
+
+✓ All results saved to results/data/
+✓ Visualization saved to results/figures/
+
+================================================================================
