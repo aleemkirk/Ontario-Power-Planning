@@ -81,5 +81,16 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-#Claude files
-Claude.md
+# LaTeX build artifacts
+*.aux
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+out/
+
+# Results logs
+results/logs/*.txt
+!results/logs/.gitkeep
+
+# Old archived files
+old_files/
