@@ -80,3 +80,6 @@ docs/_build/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+#Claude files
+Claude.md
