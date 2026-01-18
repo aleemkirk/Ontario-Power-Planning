@@ -1,5 +1,6 @@
-"""
-Analysis and visualization module.
+"""Analysis and visualization module."""
 
-Tools for generating Pareto frontiers, visualizations, and sensitivity analysis.
-"""
+from .pareto import ParetoFrontierGenerator
+from .visualizations import plot_pareto_frontier
+
+__all__ = ['ParetoFrontierGenerator', 'plot_pareto_frontier']
