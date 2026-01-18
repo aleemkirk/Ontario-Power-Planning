@@ -1,0 +1,266 @@
+[
+  {
+    "alpha": 0.0,
+    "status": "optimal",
+    "solve_time": 3.892582893371582,
+    "total_cost": 279863117792.7278,
+    "total_emissions": 49018245.18310795,
+    "ramp_penalty_cost": 39860121.917718604,
+    "capacity_2045": {
+      "nuclear": 13000.0,
+      "wind": 104122.15233359061,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    },
+    "capacity_2025": {
+      "nuclear": 13000.0,
+      "wind": 5575.0,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    }
+  },
+  {
+    "alpha": 0.1,
+    "status": "optimal",
+    "solve_time": 9.118717908859253,
+    "total_cost": 168024968245.73984,
+    "total_emissions": 51043854.5965563,
+    "ramp_penalty_cost": 43529261.431995586,
+    "capacity_2045": {
+      "nuclear": 13000.0,
+      "wind": 51083.98507141675,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    },
+    "capacity_2025": {
+      "nuclear": 13000.0,
+      "wind": 5575.0,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    }
+  },
+  {
+    "alpha": 0.2,
+    "status": "optimal",
+    "solve_time": 8.958615064620972,
+    "total_cost": 160664014865.3143,
+    "total_emissions": 52301653.2779787,
+    "ramp_penalty_cost": 61707392.98873095,
+    "capacity_2045": {
+      "nuclear": 13000.0,
+      "wind": 46440.76165537344,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    },
+    "capacity_2025": {
+      "nuclear": 13000.0,
+      "wind": 5575.0,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    }
+  },
+  {
+    "alpha": 0.30000000000000004,
+    "status": "optimal",
+    "solve_time": 8.778686046600342,
+    "total_cost": 155200282397.02,
+    "total_emissions": 54137911.19704429,
+    "ramp_penalty_cost": 81882810.86460966,
+    "capacity_2045": {
+      "nuclear": 13000.0,
+      "wind": 42591.537470172,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    },
+    "capacity_2025": {
+      "nuclear": 13000.0,
+      "wind": 5575.0,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    }
+  },
+  {
+    "alpha": 0.4,
+    "status": "optimal",
+    "solve_time": 17.127580165863037,
+    "total_cost": 150759125306.83246,
+    "total_emissions": 56523377.64485125,
+    "ramp_penalty_cost": 87092414.8100492,
+    "capacity_2045": {
+      "nuclear": 13000.0,
+      "wind": 40438.29519073346,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    },
+    "capacity_2025": {
+      "nuclear": 13000.0,
+      "wind": 5575.0,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    }
+  },
+  {
+    "alpha": 0.5,
+    "status": "optimal",
+    "solve_time": 13.92806887626648,
+    "total_cost": 147888624409.82605,
+    "total_emissions": 58904839.95689254,
+    "ramp_penalty_cost": 102489896.66956553,
+    "capacity_2045": {
+      "nuclear": 13000.0,
+      "wind": 40438.29519073346,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    },
+    "capacity_2025": {
+      "nuclear": 13000.0,
+      "wind": 5575.0,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    }
+  },
+  {
+    "alpha": 0.6000000000000001,
+    "status": "optimal",
+    "solve_time": 8.816222906112671,
+    "total_cost": 141119499116.71323,
+    "total_emissions": 67286942.0353214,
+    "ramp_penalty_cost": 137077889.45571476,
+    "capacity_2045": {
+      "nuclear": 13000.0,
+      "wind": 37662.616602817834,
+      "solar": 2669.0,
+      "gas": 12266.34091958267,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    },
+    "capacity_2025": {
+      "nuclear": 13000.0,
+      "wind": 5575.0,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    }
+  },
+  {
+    "alpha": 0.7000000000000001,
+    "status": "optimal",
+    "solve_time": 8.395316123962402,
+    "total_cost": 135797754835.56317,
+    "total_emissions": 77122006.27921918,
+    "ramp_penalty_cost": 175547871.46942458,
+    "capacity_2045": {
+      "nuclear": 13000.0,
+      "wind": 34931.99316646432,
+      "solar": 2669.0,
+      "gas": 14004.01037908036,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    },
+    "capacity_2025": {
+      "nuclear": 13000.0,
+      "wind": 5575.0,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    }
+  },
+  {
+    "alpha": 0.8,
+    "status": "optimal",
+    "solve_time": 5.872581958770752,
+    "total_cost": 172978895999.65894,
+    "total_emissions": 521628114.216199,
+    "ramp_penalty_cost": 110270253.08508663,
+    "capacity_2045": {
+      "nuclear": 13000.0,
+      "wind": 38196.91813462875,
+      "solar": 2669.0,
+      "gas": 11926.330853884814,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    },
+    "capacity_2025": {
+      "nuclear": 13000.0,
+      "wind": 5575.0,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    }
+  },
+  {
+    "alpha": 0.9,
+    "status": "optimal",
+    "solve_time": 5.910944938659668,
+    "total_cost": 172021879170.30383,
+    "total_emissions": 528156351.4368154,
+    "ramp_penalty_cost": 125280536.32314923,
+    "capacity_2045": {
+      "nuclear": 13000.0,
+      "wind": 36003.78989969266,
+      "solar": 2669.0,
+      "gas": 13321.957912480508,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    },
+    "capacity_2025": {
+      "nuclear": 13000.0,
+      "wind": 5575.0,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    }
+  },
+  {
+    "alpha": 1.0,
+    "status": "optimal",
+    "solve_time": 4.093675136566162,
+    "total_cost": 122170087268.29105,
+    "total_emissions": 315791551.0381676,
+    "ramp_penalty_cost": 244438250.3400224,
+    "capacity_2045": {
+      "nuclear": 13000.0,
+      "wind": 7296.059448984582,
+      "solar": 2669.0,
+      "gas": 31590.513653840197,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    },
+    "capacity_2025": {
+      "nuclear": 13000.0,
+      "wind": 5575.0,
+      "solar": 2669.0,
+      "gas": 10500.0,
+      "hydro": 8500.0,
+      "biofuel": 205.0
+    }
+  }
+]

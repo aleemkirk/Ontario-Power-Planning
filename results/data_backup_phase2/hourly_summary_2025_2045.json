@@ -1,0 +1,34 @@
+{
+  "total_cost": 121925649017.95099,
+  "capex_cost": 25814817334.622177,
+  "opex_cost": 60533702534.284065,
+  "maintenance_cost": 35577129149.0448,
+  "ramp_penalty_cost": 244438250.3400224,
+  "total_emissions": 315791551.0381676,
+  "capacity_2025": {
+    "nuclear": 13000.0,
+    "wind": 5575.0,
+    "solar": 2669.0,
+    "gas": 10500.0,
+    "hydro": 8500.0,
+    "biofuel": 205.0
+  },
+  "capacity_2045": {
+    "nuclear": 13000.0,
+    "wind": 7296.059448984582,
+    "solar": 2669.0,
+    "gas": 31590.513653840197,
+    "hydro": 8500.0,
+    "biofuel": 205.0
+  },
+  "new_builds_by_type": {
+    "biofuel": 0.0,
+    "gas": 21090.513653840197,
+    "hydro": 0.0,
+    "nuclear": 0.0,
+    "solar": 0.0,
+    "wind": 1721.0594489845816
+  },
+  "solve_time_seconds": 4.249856233596802,
+  "solver_status": "optimal"
+}
